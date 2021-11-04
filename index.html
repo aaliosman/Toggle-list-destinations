@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+
+    <!-- <link rel="stylesheet" href="style.css"> -->
+</head>
+
+<style>
+  body
+  {
+    font-family: arial,helvetica,sans-serif;
+  }
+     main 
+     {
+         width: 100%;
+         height: 100vh;
+         display: flex;
+         align-items: center;
+         flex-direction: column;
+         
+     }
+     .list-header
+     {
+         width: 500px;
+         height: 30px;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         border-radius: 5px;
+         background-color: #CEE4FE;
+     }
+     ul 
+     {
+         list-style: none;
+         width: 500px;
+         height: 134px;
+         
+        
+         padding: 0px;
+     }
+     li 
+     {
+         height: 25px;
+         padding-left: 5px;
+         border-radius: 5px;
+         display: flex;
+         align-items: center;
+         background-color: #CEE4FE;
+         border: 1px solid black;
+    
+     }
+     button
+     {
+         border: none;
+         padding: 8px;
+         margin-top: 15px;
+         background-color: #0B7FF8;
+     }
+     .list-hide
+     {
+         display: none;
+     }
+     #result
+     {
+         width: 500px;
+         height: 30px;
+         color : black;
+         margin: 0;
+         padding : 2px;
+         display: flex;
+         align-items: center;
+       
+     }
+</style>
+
+<body>
+   <main>
+      <h2>My Favourite Destinations</h2>
+      <div class="list-header">
+          <p>Toggle The list of my favorite destinations</p>
+      </div>
+      <ul class='list'>
+          <li>Tripoli</li>
+          <li>London</li>
+          <li>Wien</li>
+          <li>Istanbul</li>
+          <li>Tunis</li>
+      </ul>
+
+      <p id='result'></p>
+
+      <button>Hide Destinations</button>
+    
+   </main>
+    <script>
+        let main = document.querySelector('main');
+        let list_header = document.querySelector('.list-header');
+        let list = document.querySelector('.list');
+        let button = document.querySelector('button');
+        let p = document.querySelector('#result');
+
+           let  x = true;
+        button.addEventListener('click', ()=>
+        {
+           list.classList.toggle('list-hide');
+            if (x === true )
+            {
+                x = false;
+                button.innerText = 'Show Destinations';
+            }
+            else
+            {
+                x = true;
+                button.innerText = 'Hide Destinations';
+            }
+         
+        });
+
+        let listArray = Array.from(list.children);
+        console.log(listArray);
+
+        listArray.forEach((element,i) =>
+{
+    element.addEventListener('click', ()=>
+    {
+        element.style.backgroundColor ='#0B7FF8';
+        element.style.color = 'white';
+    
+        for(let j = 0; j < 5; j++)
+        {
+            if(i != j)
+            {
+                listArray[j].style.backgroundColor = 'White';
+                listArray[j].style.color = 'black';
+            }
+        }
+        result.textContent = 'You Selected:' + ' ' + element.textContent;
+        result.style.backgroundColor ='#D6F1D9';
+        button.style.display = 'none';
+    })
+})
+    </script>
+</body>
+</html>
